@@ -6,18 +6,6 @@ A simple Linux command-line utility in OCaml that finds upcoming Google Meet lin
 
 `nextmeet` connects to your Google Calendar and looks for meetings that start within the next 10 minutes or started up to 10 minutes ago (a 20-minute window). If it finds a meeting with a Google Meet link, it prints only the URL to stdout and exits with code 0. If no meeting is found, it produces no output and exits with code 1.
 
-## Features
-
-- ✅ **Silent Operation**: Only outputs the Google Meet URL when found
-- ✅ **Smart Time Window**: Finds meetings starting within ±10 minutes
-- ✅ **Multiple URL Sources**: Extracts Google Meet links from:
-  - `hangoutLink` field (most reliable)
-  - `conferenceData` structure
-  - Event descriptions, locations, and summaries (fallback)
-- ✅ **Secure Authentication**: OAuth2 flow with browser-based login
-- ✅ **Token Management**: Automatic token refresh and secure storage
-- ✅ **Robust Error Handling**: Graceful handling of network and API errors
-
 ## Installation
 
 ### Prerequisites
@@ -141,14 +129,6 @@ bar {
 ## Architecture
 
 The application consists of several modular components:
-
-### Core Modules
-
-- **`config.ml`**: Configuration and credential management
-- **`auth.ml`**: OAuth2 authentication flow  
-- **`time_utils.ml`**: Time calculations and RFC3339 formatting
-- **`calendar.ml`**: Google Calendar API client
-- **`meet_parser.ml`**: Google Meet URL extraction
 
 ### Authentication Flow
 
@@ -295,14 +275,6 @@ dune test
 dune install
 ```
 
-## Security Considerations
-
-- OAuth2 credentials stored with 600 permissions
-- Tokens automatically refreshed before expiry
-- No sensitive data logged or exposed in error messages
-- CSRF protection in OAuth2 flow (state parameter)
-- Local callback server bound to localhost only
-
 ## License
 
 This project is released under the [MIT License](LICENSE).
@@ -313,7 +285,8 @@ This project is released under the [MIT License](LICENSE).
 2. Create a feature branch
 3. Add tests for new functionality
 4. Ensure all tests pass with `dune test`
-5. Submit a pull request
+5. Run `dune fmt` to lint the source
+6. Submit a pull request
 
 ## Support
 
