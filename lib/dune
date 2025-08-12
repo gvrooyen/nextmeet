@@ -1,0 +1,13 @@
+(library
+ (public_name nextmeet)
+ (name nextmeet)
+ (libraries
+  lwt
+  cohttp-lwt-unix
+  tls-lwt
+  yojson
+  ptime
+  ptime.clock.os
+  uri
+  base64
+  str))

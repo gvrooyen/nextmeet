@@ -1,0 +1,9 @@
+(executable
+ (public_name nextmeet)
+ (name main)
+ (libraries nextmeet lwt cohttp-lwt-unix))
+
+(executable
+ (public_name nextmeet-debug)
+ (name debug)
+ (libraries nextmeet lwt cohttp-lwt-unix))
