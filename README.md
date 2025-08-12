@@ -126,6 +126,12 @@ bar {
 }
 ```
 
+**Hyprland key binding:**
+```hyprlang
+# When opening a new browser window, automatically connect to the current meeting, if any
+bind = $mainMod, B, exec, ~/bin/nextmeet | xargs $browser --new-window
+```
+
 ## Architecture
 
 The application consists of several modular components:
