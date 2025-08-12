@@ -6,65 +6,6 @@ A simple Linux command-line utility in OCaml that finds upcoming Google Meet lin
 
 `nextmeet` connects to your Google Calendar and looks for meetings that start within the next 10 minutes or started up to 10 minutes ago (a 20-minute window). If it finds a meeting with a Google Meet link, it prints only the URL to stdout and exits with code 0. If no meeting is found, it produces no output and exits with code 1.
 
-## Installation
-
-### Prerequisites
-
-- OCaml 4.08 or later
-- opam (OCaml package manager)
-- dune (build system)
-
-### Install Dependencies
-
-```bash
-opam install lwt cohttp-lwt-unix tls-lwt yojson ptime uri base64 str
-```
-
-### Build
-
-```bash
-dune build
-```
-
-### Install
-
-```bash
-dune install
-```
-
-## Setup
-
-### 1. Create Google Cloud Project
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select an existing one
-3. Enable the Google Calendar API:
-   - Go to "APIs & Services" > "Library"
-   - Search for "Google Calendar API"
-   - Click "Enable"
-
-### 2. Create OAuth2 Credentials
-
-1. Go to "APIs & Services" > "Credentials"
-2. Click "Create Credentials" > "OAuth client ID"
-3. Select "Desktop application"
-4. Name it "nextmeet" (or any name you prefer)
-5. Download the JSON file
-
-### 3. Configure nextmeet
-
-Save your credentials to `~/.config/nextmeet/credentials.json`:
-
-```json
-{
-  "client_id": "your-google-client-id-here",
-  "client_secret": "your-google-client-secret-here", 
-  "redirect_uri": "http://localhost:8080"
-}
-```
-
-**Security Note**: This file contains sensitive information. The application automatically sets file permissions to 600 (owner read/write only).
-
 ## Usage
 
 ### Basic Usage
@@ -127,10 +68,69 @@ bar {
 ```
 
 **Hyprland key binding:**
-```hyprlang
+```bash
 # When opening a new browser window, automatically connect to the current meeting, if any
 bind = $mainMod, B, exec, ~/bin/nextmeet | xargs $browser --new-window
 ```
+
+## Installation
+
+### Prerequisites
+
+- OCaml 4.08 or later
+- opam (OCaml package manager)
+- dune (build system)
+
+### Install Dependencies
+
+```bash
+opam install lwt cohttp-lwt-unix tls-lwt yojson ptime uri base64 str
+```
+
+### Build
+
+```bash
+dune build
+```
+
+### Install
+
+```bash
+dune install
+```
+
+## Setup
+
+### 1. Create Google Cloud Project
+
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the Google Calendar API:
+   - Go to "APIs & Services" > "Library"
+   - Search for "Google Calendar API"
+   - Click "Enable"
+
+### 2. Create OAuth2 Credentials
+
+1. Go to "APIs & Services" > "Credentials"
+2. Click "Create Credentials" > "OAuth client ID"
+3. Select "Desktop application"
+4. Name it "nextmeet" (or any name you prefer)
+5. Download the JSON file
+
+### 3. Configure nextmeet
+
+Save your credentials to `~/.config/nextmeet/credentials.json`:
+
+```json
+{
+  "client_id": "your-google-client-id-here",
+  "client_secret": "your-google-client-secret-here", 
+  "redirect_uri": "http://localhost:8080"
+}
+```
+
+**Security Note**: This file contains sensitive information. The application automatically sets file permissions to 600 (owner read/write only).
 
 ## Architecture
 
